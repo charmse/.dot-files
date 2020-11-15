@@ -70,7 +70,9 @@ custom_link() {
   return 0
 }
 
-custom_link "$HOME/.dotfiles/bash/.bashrc" "$HOME/.zsh_profile"
-custom_link "$HOME/.dotfiles/bash/.bashrc" "$HOME/.zshrc"
-custom_link "$HOME/.dotfiles/nvim/init.vim" "$HOME/.config/nvim/init.vim"
-custom_link "$HOME/.dotfiles/tmux/.tmux.conf" "$HOME/.tmux.conf"
+custom_link "$HOME/.dotfiles/.zsh_profile" "$HOME/.zsh_profile"
+custom_link "$HOME/.dotfiles/.zshrc" "$HOME/.zshrc"
+custom_link "$HOME/.dotfiles/init.vim" "$HOME/.config/nvim/init.vim"
+custom_link "$HOME/.dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+custom_link "$HOME/.dotfiles/.gitconfig" "$HOME/.gitconfig"
+custom_link "$HOME/.dotfiles/init.el" "$HOME/.emacs.d/init.el"
