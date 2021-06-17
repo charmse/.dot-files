@@ -1,78 +1,38 @@
-#############################################
-#  Cale's Motherfuckin' Zshell Config File  #
-#############################################
+export ZSH="/Users/charms/.oh-my-zsh"
+ZSH_THEME="charms2"
 
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/ch073217/.oh-my-zsh"
+plugins=(
+  git
+)
 
-# Theme
-ZSH_THEME="charms"
-
-# Plugins
-plugins=(git)
-
-# Source
 source $ZSH/oh-my-zsh.sh
 
-# Aliases
-alias c="clear"
-alias l="ls -ac"
-alias cd="pushd"
-alias pd="popd"
-alias d="dirs -v"
-alias m="mkdir"
+export LANG=en_US.UTF-8
+export EDITOR='nvim'
+export PATH="/usr/local/bin:$PATH"
+export TERM=screen-256color
+export PATH=/Users/charms/.opam/default/bin:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/charms/.opam/default/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:~/Downloads/nand2tetris/tools
+export PATH=/Users/charms/.opam/default/bin:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/charms/.opam/default/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:~/Downloads/nand2tetris/tools
 
-# Apps
-alias v="nvim"
-alias g="git"
-alias k="kubectl"
-alias mk="minikube"
-alias top="gotop -pa"
+alias ds='dirs -v'
+alias ls='ls -G'
+alias la='ls -aG'
+alias cd='pushd'
+alias pd='popd'
+# Copy the PWD to the Clipboard
+alias cpwd="pwd | tr -d '\n' | pbcopy && echo 'pwd copied to clipboard'"
+alias vi='vim'
+alias zk='vim ~/Notes/zettelkasten/litnotes.txt'
+alias cal='calcurse'
+alias yt='mpsyt'
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
+alias td='todolist'
+alias top='gotop'
+alias music='musikcube'
 
-# NPM
-alias nr="npm run"
-alias nt="npm test"
-alias nl="npm run eslint"
-alias ntal="npm test && npm run eslint"
+# opam configuration
+test -r /Users/charms/.opam/opam-init/init.zsh && . /Users/charms/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# Maven
-alias mt="mvn test"
-alias md="mvn detekt:check -Ddetekt.config=detekt-asd.yml"
-alias mtad="mvn test && mvn detekt:check -Ddetekt.config=detekt-asd.yml"
-
-export PATH="/usr/local/Cellar/maven@3.5/3.5.4/bin/:$PATH"
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-# Python
-alias p=python
-alias j=jupyter
-alias jn="jupyter notebook"
-alias jl="jupyter lab"
-alias md="markdown_py"
-
-PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
-PATH="$PATH:$PYTHON_BIN_PATH"
-
-# split_tunnel commands
-alias split="split_tunnel"
-alias close="sudo close_split_tunnel"
-alias cleanup="sudo cleanup_split_tunnel"
-
-# silver-lion commands
-alias slapi="npm run start-api:dev"
-alias sl="npm run start:dev"
-alias slbwl="npm run start:https"
-slbwlfn() {
-    if [ "$1" != "" ] # or better, if [ -n "$1" ]
-    then
-        npm run start:https https://cssa:3000/?realm=$1
-    else
-        npm run start:https https://cssa:3000/?realm=associate
-    fi
-}
-#export ELASTIC_APM_INSTRUMENT="false"
-
-# . file paths
-ZRC="$HOME/.zshrc"
-VRC="$HOME/.config/nvim/init.vim"
+it2prof() { echo -e "\033]50;SetProfile=$1\a" }
+alias dark='it2prof Dark'
+alias light='it2prof Light'
